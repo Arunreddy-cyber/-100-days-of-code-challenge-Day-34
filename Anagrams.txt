@@ -1,0 +1,58 @@
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        int t=sc.nextInt();
+        for(int k=0;k<t;k++){
+            String s1=sc.next();
+            String s2=sc.next();
+            int c=0;
+            if(s1.length()!=s2.length())
+            {
+                c=1;
+            }
+        
+        HashMap<Character,Integer> hm=new HashMap<>();
+        for(int i=0;i<s1.length();i++)
+        {
+            if(hm.containsKey(s1.charAt(i)))
+            {
+                hm.put(s1.charAt(i),hm.get(s1.charAt(i))+1);
+            }
+            else{
+                hm.put(s1.charAt(i),1);
+            }
+        }
+        for(int j=0;j<s2.length();j++)
+        {
+            if(hm.containsKey(s2.charAt(j)))
+            {
+                 hm.put(s2.charAt(j),hm.get(s2.charAt(j))-1);
+            }
+          
+        }
+        
+        for(Map.Entry<Character,Integer> map:hm.entrySet())
+        {
+            if(map.getValue()!=0)
+            {
+                c=1;
+                break;
+            }
+        }
+        if(c==1)
+        {
+            System.out.println("False");
+
+        }
+        else
+        {
+            System.out.println("True");
+
+        }
+    }
+  }
+}
