@@ -1,0 +1,57 @@
+class Solution {
+    public int vowelStrings(String[] words, int left, int right) {
+       // char[] ch='a','e','i','o','u';
+       HashSet<Character> hs=new HashSet<>();
+       hs.add('a');
+       hs.add('e');
+       hs.add('i');
+       hs.add('o');
+       hs.add('u');
+
+        int c=0;
+        for(int i=left;i<=right;i++)
+        {
+            String str=words[i];
+            //take a new string for storing strings present in words aray
+            if(hs.contains(str.charAt(0)) && hs.contains(str.charAt(str.length()-1)))
+            {
+                //iterate in hashset does 0th index & end indx conatins vowel 
+                c++;
+            }
+        }
+        return c;
+        
+    }
+}
+
+Approach-2:
+
+class Solution {
+    public int vowelStrings(String[] words, int left, int right) {
+
+        int count = 0;
+
+        for (int i = left; i <= right ; i++) {
+
+            String s = words[i];
+
+            if (Vowel (s.charAt(0)) && Vowel (s.charAt(s.length()-1))) {
+
+                count += 1;
+            }
+        }
+
+        return count;
+        
+    }
+
+    public boolean Vowel (char ch) {
+
+        if (ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u') {
+
+            return true;
+        }
+
+        return false;
+    }
+}
