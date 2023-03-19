@@ -1,0 +1,36 @@
+class Solution {
+    public int[] intersection(int[] nums1, int[] nums2) {
+       
+        //first sort both the arrays
+        Arrays.sort(nums1);
+        Arrays.sort(nums2);
+        //store the length of both the arrays
+        int n = nums1.length;
+        int m = nums2.length;
+
+        //create hashset to avoid the duplicate entry in result
+        HashSet<Integer> resultSet = new HashSet<>();
+        //Here, i is pointing to the first array i.e nums1 and j is pointing to second array i.e. nums2
+        int i = 0, j = 0;
+        while (i < n && j < m) {
+            if (nums1[i] < nums2[j]) {
+                i++;
+            } else if (nums1[i] > nums2[j]) {
+                j++;
+            } else if (nums1[i] == nums2[j]) {
+                resultSet.add(nums1[i]);
+                i++;
+                j++;
+            }
+        }
+         //Now final task is to store hashset value to array
+        int[] finalResult = new int[resultSet.size()];
+        int index = 0;
+        for (int value : resultSet) {
+            finalResult[index++] = value;
+        }
+        return finalResult;
+
+        
+    }
+}
