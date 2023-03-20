@@ -1,0 +1,21 @@
+class Solution {
+    public int secondHighest(String s) {
+        
+        int greatestDigit = -1;
+        int secondGreatestDigit = -1;
+        
+        for (char c : s.toCharArray()) {
+            if ((c <= 57)) {
+                int curDigit = c - 48;
+                if (curDigit > greatestDigit) {
+                    secondGreatestDigit = greatestDigit;
+                    greatestDigit = curDigit;
+                } 
+                else if (curDigit == greatestDigit || curDigit == secondGreatestDigit);
+                else if (curDigit > secondGreatestDigit) secondGreatestDigit = curDigit;
+            }
+        }
+        
+        return secondGreatestDigit;
+    }
+}
